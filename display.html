@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Donation Display Only</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body class="display-only-page">
+    <main class="display-only-shell">
+      <section class="preview-area" aria-label="Donation display">
+        <div class="display-card">
+          <div class="display-topline">
+            <span class="live-dot"></span>
+            <span>Live fundraiser</span>
+          </div>
+
+          <h2 id="previewName">Community Relief Fund</h2>
+
+          <div class="amount-row">
+            <span id="previewAmount">MYR&nbsp;500</span>
+            <span class="raised-copy">raised</span>
+          </div>
+
+          <div class="progress-wrap" aria-label="Fundraising progress">
+            <div id="progressBar" class="progress-bar"></div>
+          </div>
+
+          <div class="donor-list-wrap">
+            <div class="donor-list-heading">5 latest donors</div>
+            <div id="previewDonorList" class="donor-list" aria-live="polite">
+              <div class="donor-list-row">
+                <span>Aisha Rahman</span>
+                <strong>$250</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="stat-row">
+            <div>
+              <span id="previewGoal" class="stat-value">MYR&nbsp;25,000</span>
+              <span class="stat-label">goal</span>
+            </div>
+            <div>
+              <span id="previewPercent" class="stat-value">2%</span>
+              <span class="stat-label">funded</span>
+            </div>
+            <div>
+              <span id="previewDonors" class="stat-value">5</span>
+              <span class="stat-label">donors</span>
+            </div>
+          </div>
+
+          <div class="footer-row">
+            <span id="previewNote">Updated just now</span>
+            <span>Thank you for giving</span>
+          </div>
+          <span id="syncStatus" class="display-sync-status">Checking cloud connection...</span>
+        </div>
+      </section>
+    </main>
+
+    <script src="./firebase-config.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.15.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore-compat.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

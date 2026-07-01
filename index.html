@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Donation Total Display</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="control-panel" aria-label="Donation controls">
+        <div class="brand-row">
+          <div class="brand-mark">$</div>
+          <div>
+            <p class="eyebrow">Live donation display</p>
+            <h1>Fundraiser Total</h1>
+          </div>
+        </div>
+
+        <form id="donation-form" class="form-grid">
+          <label>
+            Campaign name
+            <input id="campaignName" name="campaignName" value="Community Relief Fund" maxlength="60">
+          </label>
+
+          <label>
+            Amount raised, auto total
+            <input id="amountRaised" name="amountRaised" type="number" min="0" step="1" value="500" readonly>
+          </label>
+
+          <label>
+            Goal
+            <input id="goalAmount" name="goalAmount" type="number" min="1" step="1" value="25000">
+          </label>
+
+          <label>
+            Donors, auto count
+            <input id="donorCount" name="donorCount" type="number" min="0" step="1" value="5" readonly>
+          </label>
+
+          <fieldset class="donor-editor">
+            <legend>All donor details</legend>
+            <div class="donor-table-head" aria-hidden="true">
+              <span>Date</span>
+              <span>Name</span>
+              <span>Amount</span>
+              <span></span>
+            </div>
+            <div id="donorRows" class="donor-rows"></div>
+            <button id="addDonorButton" type="button" class="secondary donor-action">Add donor</button>
+          </fieldset>
+
+          <label>
+            Currency
+            <select id="currencyCode" name="currencyCode">
+              <option value="USD">USD</option>
+              <option value="MYR" selected>MYR</option>
+              <option value="EUR">EUR</option>
+              <option value="GBP">GBP</option>
+              <option value="SGD">SGD</option>
+              <option value="AUD">AUD</option>
+            </select>
+          </label>
+
+          <label>
+            Update note
+            <input id="updateNote" name="updateNote" value="Updated just now" maxlength="40">
+          </label>
+        </form>
+
+        <div class="button-row">
+          <button id="saveButton" type="button">Save display</button>
+          <button id="resetButton" type="button" class="secondary">Reset sample</button>
+          <button id="exportButton" type="button" class="secondary">Export Excel</button>
+          <a class="link-button" href="./display.html" target="_blank" rel="noopener">Open display only</a>
+        </div>
+
+        <div class="tip-box">
+          <strong>Display note</strong>
+          <span>Use this as a manual live display, or connect your own approved donation endpoint later.</span>
+          <span id="syncStatus">Checking cloud connection...</span>
+        </div>
+      </section>
+
+      <section class="preview-area" aria-label="Donation preview">
+        <div class="display-card">
+          <div class="display-topline">
+            <span class="live-dot"></span>
+            <span>Live fundraiser</span>
+          </div>
+
+          <h2 id="previewName">Community Relief Fund</h2>
+
+          <div class="amount-row">
+            <span id="previewAmount">MYR&nbsp;500</span>
+            <span class="raised-copy">raised</span>
+          </div>
+
+          <div class="progress-wrap" aria-label="Fundraising progress">
+            <div id="progressBar" class="progress-bar"></div>
+          </div>
+
+          <div class="donor-list-wrap">
+            <div class="donor-list-heading">5 latest donors</div>
+            <div id="previewDonorList" class="donor-list" aria-live="polite">
+              <div class="donor-list-row">
+                <span>Aisha Rahman</span>
+                <strong>$250</strong>
+              </div>
+              <div class="donor-list-row">
+                <span>Michael Tan</span>
+                <strong>$100</strong>
+              </div>
+              <div class="donor-list-row">
+                <span>Priya Nair</span>
+                <strong>$75</strong>
+              </div>
+              <div class="donor-list-row">
+                <span>Daniel Lee</span>
+                <strong>$50</strong>
+              </div>
+              <div class="donor-list-row">
+                <span>Anonymous donor</span>
+                <strong>$25</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="stat-row">
+            <div>
+              <span id="previewGoal" class="stat-value">MYR&nbsp;25,000</span>
+              <span class="stat-label">goal</span>
+            </div>
+            <div>
+              <span id="previewPercent" class="stat-value">2%</span>
+              <span class="stat-label">funded</span>
+            </div>
+            <div>
+              <span id="previewDonors" class="stat-value">5</span>
+              <span class="stat-label">donors</span>
+            </div>
+          </div>
+
+          <div class="footer-row">
+            <span id="previewNote">Updated just now</span>
+            <span>Thank you for giving</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./firebase-config.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.15.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore-compat.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
